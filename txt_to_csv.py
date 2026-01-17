@@ -1,8 +1,8 @@
 import os
 import pandas as pd
-from tqdm import tqdm  # Импортируем tqdm
+from tqdm import tqdm
 
-# Список папок
+
 folders = [
     '001_transcriptions_v3',
     '002_transcriptions_v3',
@@ -13,7 +13,6 @@ folders = [
 
 data = []
 
-# Сначала соберём все .txt файлы, чтобы знать общее количество
 all_txt_files = []
 for folder in folders:
     folder_path = folder
@@ -28,7 +27,6 @@ for folder in folders:
 
 print(f"Найдено {len(all_txt_files)} .txt файлов. Начинаем обработку...\n")
 
-# Обработка с прогресс-баром
 for file_path in tqdm(all_txt_files, desc="Обработка файлов", unit="файл"):
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -37,7 +35,6 @@ for file_path in tqdm(all_txt_files, desc="Обработка файлов", uni
     except Exception as e:
         print(f"\nОшибка при чтении {file_path}: {e}")
 
-# Создаём DataFrame и сохраняем в CSV
 if data:
     df = pd.DataFrame(data)
     output_csv = 'all_transcriptions.csv'

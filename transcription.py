@@ -11,7 +11,7 @@ folders = [
     '005_resample'
 ]
 
-os.environ["HF_TOKEN"] = "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"
+os.environ["HF_TOKEN"] = "токен"
 
 print("Загружаем модель GigaAM")
 model = gigaam.load_model("v3_e2e_rnnt")
